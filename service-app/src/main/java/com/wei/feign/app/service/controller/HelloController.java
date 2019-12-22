@@ -33,9 +33,12 @@ public class HelloController {
 
     @RequestMapping(value = "/getall", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String getAll(HttpServletRequest request){
-        String retrunValue = "Hello! This is getall request!";
-        System.out.println("=============GET Process======= " + request.getMethod());
+    public ResultDTO getAll(HttpServletRequest request){
+        ResultDTO returnValue = new ResultDTO();
+        returnValue.setCode(0);
+        returnValue.setMessage("success.");
+        returnValue.setData("Hello! This is getAll Request!");
+        System.out.println("=============getAll Process======= " + request.getMethod());
 
 
         Map<String,String[]> requestMsg = request.getParameterMap();
@@ -62,14 +65,17 @@ public class HelloController {
         System.out.println("");
         System.out.println("");
         System.out.println("");
-        return retrunValue;
+        return returnValue;
     }
 
     @RequestMapping(value = "/postall", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String postAll(HttpServletRequest request){
-        String retrunValue = "Hello! This is POST Request!";
-        System.out.println("=============POST Process=======" + request.getMethod());
+    public ResultDTO postAll(HttpServletRequest request){
+        ResultDTO returnValue = new ResultDTO();
+        returnValue.setCode(0);
+        returnValue.setMessage("success.");
+        returnValue.setData("Hello! This is postAll Request!");
+        System.out.println("=============postAll Process=======" + request.getMethod());
 
 
         Map<String,String[]> requestMsg = request.getParameterMap();
@@ -106,7 +112,7 @@ public class HelloController {
         System.out.println("");
         System.out.println("");
         System.out.println("");
-        return retrunValue;
+        return returnValue;
     }
 
     public static String isToStr(InputStream is) throws IOException {
