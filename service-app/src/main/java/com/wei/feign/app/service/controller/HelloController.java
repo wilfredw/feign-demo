@@ -118,8 +118,9 @@ public class HelloController {
     public static String isToStr(InputStream is) throws IOException {
         byte[] buffer = new byte[1024];
         StringBuffer stringBuffer = new StringBuffer();
-        while(is.read(buffer) >= 0) {
-            stringBuffer.append(new String(buffer, "UTF-8"));
+        int len;
+        while((len = is.read(buffer)) >= 0) {
+            stringBuffer.append(new String(buffer, 0, len, "UTF-8"));
         }
         return stringBuffer.toString();
     }
